@@ -1,0 +1,574 @@
+[gd_scene format=3 uid="uid://bs8fkwmjbd2vy"]
+
+[ext_resource type="Texture2D" uid="uid://iu6vftxpjur1" path="res://Scenes/Menu Scene/Assets/WPI_Inst_Prim_BLK.png" id="1_1rerr"]
+[ext_resource type="Texture2D" uid="uid://ct3287h3tinpv" path="res://Menu/menu_credits.png" id="1_6swd7"]
+[ext_resource type="Script" uid="uid://bi8s7rr1xpbhx" path="res://Scenes/WPIsplashscreen.gd" id="1_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://dq5ye5y8c0sru" path="res://Menu/menu_start_game.png" id="2_7qvly"]
+[ext_resource type="AudioStream" uid="uid://nig0cjcmytor" path="res://Audio/Music/title_main.ogg" id="2_wwsa2"]
+[ext_resource type="AudioStream" uid="uid://p4dr3qtq360d" path="res://Audio/Music/title_intro.ogg" id="3_cayip"]
+[ext_resource type="Texture2D" uid="uid://c1jv6igp4kqrx" path="res://Menu/menu_version.png" id="3_rfqti"]
+[ext_resource type="AudioStream" uid="uid://blj3akmuwujli" path="res://Audio/Music/title_outro.ogg" id="3_wbdvm"]
+[ext_resource type="Texture2D" uid="uid://d25ooioplr3ct" path="res://Splash/MulliganSplash.png" id="4_158mb"]
+[ext_resource type="Texture2D" uid="uid://htoxd3x7kgp8" path="res://Menu/logo.png" id="7_7qvly"]
+
+[sub_resource type="Curve" id="Curve_g4v7s"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_yf5fn"]
+_data = [Vector2(0.5892116, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_57qmd"]
+_data = [Vector2(0.51037335, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_g4v7s"]
+curve_x = SubResource("Curve_g4v7s")
+curve_y = SubResource("Curve_yf5fn")
+curve_z = SubResource("Curve_57qmd")
+
+[node name="Menu" type="Node2D" unique_id=991874825]
+
+[node name="SplashScreen" type="Node2D" parent="." unique_id=1454354233]
+script = ExtResource("1_xhh6f")
+
+[node name="darkenedSplash" type="Sprite2D" parent="SplashScreen" unique_id=322434428]
+position = Vector2(576.00006, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_158mb")
+
+[node name="title_outro" type="AudioStreamPlayer" parent="SplashScreen" unique_id=404935716]
+stream = ExtResource("3_wbdvm")
+
+[node name="title_main" type="AudioStreamPlayer2D" parent="SplashScreen" unique_id=67100423]
+stream = ExtResource("2_wwsa2")
+parameters/looping = true
+
+[node name="title_intro" type="AudioStreamPlayer2D" parent="SplashScreen" unique_id=1219077012]
+stream = ExtResource("3_cayip")
+
+[node name="WPI Logo" type="Sprite2D" parent="SplashScreen" unique_id=573250293]
+z_index = 1
+position = Vector2(565.70605, 319)
+scale = Vector2(0.4265809, 0.42658088)
+texture = ExtResource("1_1rerr")
+
+[node name="Background Gradient" type="Sprite2D" parent="SplashScreen" unique_id=1372909643]
+position = Vector2(575.99994, 324)
+scale = Vector2(4.5, 648)
+texture = SubResource("CurveXYZTexture_g4v7s")
+
+[node name="Timer" type="Timer" parent="SplashScreen" unique_id=122467664]
+wait_time = 4.0
+autostart = true
+
+[node name="musicSync" type="Timer" parent="SplashScreen" unique_id=1095137833]
+wait_time = 10.34
+one_shot = true
+
+[node name="splash" type="Sprite2D" parent="SplashScreen" unique_id=1908536300]
+visible = false
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_158mb")
+
+[node name="logo" type="Sprite2D" parent="SplashScreen" unique_id=1305702408]
+visible = false
+position = Vector2(625.00006, 147.00006)
+rotation = -0.23387411
+scale = Vector2(0.35568509, 0.35568514)
+texture = ExtResource("7_7qvly")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SplashScreen" unique_id=1124082957]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 396.0
+offset_top = 288.0
+offset_right = 611.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+offset_transform_position = Vector2(288, 0)
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Start Game Button" type="Button" parent="SplashScreen/HBoxContainer" unique_id=2014798996]
+visible = false
+texture_filter = 1
+layout_mode = 2
+icon = ExtResource("2_7qvly")
+flat = true
+
+[node name="Version Notes Button" type="Button" parent="SplashScreen/HBoxContainer" unique_id=1173073915]
+visible = false
+texture_filter = 1
+layout_mode = 2
+icon = ExtResource("3_rfqti")
+flat = true
+
+[node name="Credits Button" type="Button" parent="SplashScreen/HBoxContainer" unique_id=525577749]
+visible = false
+texture_filter = 1
+layout_mode = 2
+icon = ExtResource("1_6swd7")
+flat = true
+
+[node name="Back Button" type="Button" parent="SplashScreen" unique_id=1484438903]
+visible = false
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 206.0
+offset_bottom = 37.0
+text = "<- Return To Main Menu"
+
+[node name="ScrollContainer Version" type="ScrollContainer" parent="SplashScreen" unique_id=1223652792]
+visible = false
+offset_left = 64.0
+offset_top = 67.0
+offset_right = 1113.0
+offset_bottom = 610.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Version Notes" type="RichTextLabel" parent="SplashScreen/ScrollContainer Version" unique_id=901223212]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Version 0.1.0, released 9/1/2026
+* Added WPI splash screen
+* Added Mulligan splash screen
+* Added music to the title menu
+* Added start game (Hit me!), version notes, and credits button to main menu
+* Added version notes text display
+* Added credits text display
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* this is a test for the scrolling. Props to you for getting this far
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* Your dedication is commendable"
+fit_content = true
+
+[node name="ScrollContainer Credits" type="ScrollContainer" parent="SplashScreen" unique_id=450635214]
+visible = false
+offset_left = 64.0
+offset_top = 67.0
+offset_right = 1113.0
+offset_bottom = 610.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Credits" type="RichTextLabel" parent="SplashScreen/ScrollContainer Credits" unique_id=868251565]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Mulligan
+
+A game made by:
+Milo Rozza     |      Kaiden Gustafson     |      Jerry Yan     |      Ben Thomas
+
+(C) September 1st, 2026
+Created using Godot v4.3"
+fit_content = true
+scroll_following = true
+
+[connection signal="finished" from="SplashScreen/title_intro" to="SplashScreen" method="_on_title_intro_finished"]
+[connection signal="timeout" from="SplashScreen/Timer" to="SplashScreen" method="_on_timer_timeout"]
+[connection signal="timeout" from="SplashScreen/musicSync" to="SplashScreen" method="_on_music_sync_timeout"]
+[connection signal="pressed" from="SplashScreen/HBoxContainer/Start Game Button" to="SplashScreen" method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="SplashScreen/HBoxContainer/Version Notes Button" to="SplashScreen" method="_on_version_notes_button_pressed"]
+[connection signal="pressed" from="SplashScreen/HBoxContainer/Credits Button" to="SplashScreen" method="_on_credits_button_pressed"]
+[connection signal="pressed" from="SplashScreen/Back Button" to="SplashScreen" method="_on_back_button_pressed"]
